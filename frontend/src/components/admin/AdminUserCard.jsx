@@ -8,10 +8,7 @@ const AdminUserCard = ({ user, handleModal }) => {
       <div className="card h-100 p-1">
         <Link to={"/user/" + user.email}>
           <img
-            src={
-              process.env.APP_URL +
-              "/api/images?image=logo/banner/userPicture.png"
-            }
+            src={"/api/userPicture.png"}
             className="d-block mx-auto w-25"
             alt="..."
           />

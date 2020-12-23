@@ -15,8 +15,8 @@ class AdminNavBar extends Component {
         <nav className="navbar navbar-expand-lg navbar-expand-md navbar-light bg-nav-color-black">
           <Link className="navbar-brand" to="/">
             <img
-              src={"data:image/webp;base64," + this.state.banners[1]}
-              // src={"http://localhost:8080/api/images?image=34-0.png"}
+              // src={"data:image/webp;base64," + this.state.banners[1]}
+              src={"/api/small-banner.webp"}
               width="60"
               height="70"
               alt="Banner"

@@ -86,8 +86,7 @@ async function getMonthlyAnalytics(year, month) {
 }
 async function getProductMonthlyAnalytics(year, month, productId) {
   const recievedData = await axios.get(
-    baseURL +
-      "/api/product_monthly_analytics?year=" +
+    "/api/product_monthly_analytics?year=" +
       year +
       "&month=" +
       month +
