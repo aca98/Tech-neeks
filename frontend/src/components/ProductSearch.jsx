@@ -17,7 +17,7 @@ class ProductSearch extends Component {
     if (this.state.filterQuery) {
       const recievedData = await axios({
         method: "post",
-        url: "http://localhost:8080/filter",
+        url: process.env.APP_URL + "/api/filter",
         data: {
           filter: this.state.filterQuery,
         },
@@ -135,7 +135,7 @@ class ProductSearch extends Component {
     const recievedData = (
       await axios({
         method: "post",
-        url: "http://localhost:8080/api/filter",
+        url: process.env.APP_URL + "/api/filter",
         data: formdata,
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       })
@@ -220,7 +220,7 @@ class ProductSearch extends Component {
     const recievedData = (
       await axios({
         method: "post",
-        url: "http://localhost:8080/api/filter",
+        url: process.env.APP_URL + "/api/filter",
         data: formdata,
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
       })

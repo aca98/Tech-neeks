@@ -1,117 +1,98 @@
 import axios from "axios";
 import querystring from "querystring";
 
+const baseURL = process.env.APP_URL;
+
 async function getBanner() {
-  const banner = await axios.get("http://localhost:8080/api/banner");
+  const banner = await axios.get(baseURL + "/api/banner");
   return banner.data;
 }
 async function getSmallBanner() {
-  const banner = await axios.get("http://localhost:8080/api/small-banner");
+  const banner = await axios.get(baseURL + "/api/small-banner");
   return banner.data;
 }
 async function getProducts() {
-  const recievedData = await axios.get("http://localhost:8080/api/");
+  const recievedData = await axios.get(baseURL + "/api/");
   return recievedData.data;
 }
 async function getAllProducts() {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/all_products"
-  );
+  const recievedData = await axios.get(baseURL + "/api/all_products");
   return recievedData.data;
 }
 
 async function searchProducts(query) {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/search?query=" + query
-  );
+  const recievedData = await axios.get(baseURL + "/api/search?query=" + query);
   return recievedData.data;
 }
 async function adminSearchProducts(query) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/adminsearch?query=" + query
+    baseURL + "/api/adminsearch?query=" + query
   );
   return recievedData.data;
 }
 async function getFilteredProducts(criteria) {
   if (criteria) {
-    const recievedData = await axios.get("http://localhost:8080/api/");
+    const recievedData = await axios.get(baseURL + "/api/");
     return recievedData.data;
   } else {
-    const recievedData = await axios.post("http://localhost:8080/api/filter", {
+    const recievedData = await axios.post(baseURL + "/api/filter", {
       filter: criteria,
     });
     return recievedData;
   }
 }
 async function getListOfFilters() {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/product_filters"
-  );
+  const recievedData = await axios.get(baseURL + "/api/product_filters");
   return recievedData.data;
 }
 async function getDefaultFilters() {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/defaultFilters"
-  );
+  const recievedData = await axios.get(baseURL + "/api/defaultFilters");
   return recievedData.data;
 }
 async function getProduct(id) {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/products?id=" + id
-  );
+  const recievedData = await axios.get(baseURL + "/api/products?id=" + id);
   return recievedData.data;
 }
 async function restoreProduct(id) {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/restore?id=" + id
-  );
+  const recievedData = await axios.get(baseURL + "/api/restore?id=" + id);
   return recievedData.data;
 }
 async function getUser(email) {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/users?email=" + email
-  );
+  const recievedData = await axios.get(baseURL + "/api/users?email=" + email);
   return recievedData.data;
 }
 async function searchUsers(query) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/searchusers?query=" + query
+    baseURL + "/api/searchusers?query=" + query
   );
   return recievedData.data;
 }
 async function getEveryUser(email) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/everyUser?email=" + email
+    baseURL + "/api/everyUser?email=" + email
   );
   return recievedData.data;
 }
 async function getAnalytics(year) {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/analytics?year=" + year
-  );
+  const recievedData = await axios.get(baseURL + "/api/analytics?year=" + year);
   return recievedData.data;
 }
 async function getProductAnalytics(year, productId) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/product_analytics?year=" +
-      year +
-      "&productId=" +
-      productId
+    baseURL + "/api/product_analytics?year=" + year + "&productId=" + productId
   );
   return recievedData.data;
 }
 async function getMonthlyAnalytics(year, month) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/monthly_analytics?year=" +
-      year +
-      "&month=" +
-      month
+    baseURL + "/api/monthly_analytics?year=" + year + "&month=" + month
   );
   return recievedData.data;
 }
 async function getProductMonthlyAnalytics(year, month, productId) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/product_monthly_analytics?year=" +
+    baseURL +
+      "/api/product_monthly_analytics?year=" +
       year +
       "&month=" +
       month +
@@ -122,28 +103,25 @@ async function getProductMonthlyAnalytics(year, month, productId) {
 }
 async function changeUser(email) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/changeUser?email=" + email
+    baseURL + "/api/changeUser?email=" + email
   );
   return recievedData.data;
 }
 async function userChangePassword(email, password) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/changepassword?email=" +
-      email +
-      "&password=" +
-      password
+    baseURL + "/api/changepassword?email=" + email + "&password=" + password
   );
   return recievedData.data;
 }
 async function getUserHistory(email) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/userhistory?email=" + email
+    baseURL + "/api/userhistory?email=" + email
   );
   return recievedData.data;
 }
 async function logIn(email, password) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/login?email=" + email + "&password=" + password
+    baseURL + "/api/login?email=" + email + "&password=" + password
   );
   console.log("logIn data", recievedData.status);
   return recievedData;
@@ -151,7 +129,7 @@ async function logIn(email, password) {
 
 async function verifyToken(token) {
   const recievedData = await axios.post(
-    "http://localhost:8080/api/validate",
+    baseURL + "/api/validate",
     querystring.stringify({
       token: token,
     }),
@@ -165,7 +143,7 @@ async function verifyToken(token) {
 }
 async function purchaseCart(user, listOfProducts) {
   const recievedData = await axios.post(
-    "http://localhost:8080/api/purchaseCart",
+    baseURL + "/api/purchaseCart",
     {
       user: user,
       products: listOfProducts,
@@ -181,7 +159,7 @@ async function purchaseCart(user, listOfProducts) {
 async function updateProduct(product, images) {
   const recievedData = await await axios({
     method: "post",
-    url: "http://localhost:8080/api/updateproduct",
+    url: baseURL + "/api/updateproduct",
     data: {
       product,
       images,
@@ -196,7 +174,7 @@ async function updateProduct(product, images) {
 async function addProduct(product, images) {
   const recievedData = await await axios({
     method: "post",
-    url: "http://localhost:8080/api/add",
+    url: baseURL + "/api/add",
     data: {
       product,
       images,
@@ -212,7 +190,7 @@ async function addProduct(product, images) {
 async function adminRegister(user) {
   const recievedData = await await axios({
     method: "post",
-    url: "http://localhost:8080/api/adminregister",
+    url: baseURL + "/api/adminregister",
     data: {
       ...user,
     },
@@ -226,7 +204,7 @@ async function adminRegister(user) {
 async function userRegister(user) {
   const recievedData = await await axios({
     method: "post",
-    url: "http://localhost:8080/api/register",
+    url: baseURL + "/api/register",
     data: {
       ...user,
     },
@@ -240,7 +218,7 @@ async function userRegister(user) {
 async function updateUser(user) {
   const recievedData = await await axios({
     method: "post",
-    url: "http://localhost:8080/api/update_user",
+    url: baseURL + "/api/update_user",
     data: {
       ...user,
     },
@@ -254,41 +232,37 @@ async function updateUser(user) {
 
 async function deleteProduct(id) {
   const recievedData = await axios.get(
-    "http://localhost:8080/api/delete_product?id=" + id
+    baseURL + "/api/delete_product?id=" + id
   );
   return recievedData.data;
 }
 async function getUsers() {
-  const recievedData = await axios.get("http://localhost:8080/api/allusers");
+  const recievedData = await axios.get(baseURL + "/api/allusers");
   return recievedData.data;
 }
 async function getPopularProducts() {
-  const recievedData = await axios.get("http://localhost:8080/api/popular");
+  const recievedData = await axios.get(baseURL + "/api/popular");
   return recievedData.data;
 }
 async function getDiscountProducts() {
-  const recievedData = await axios.get(
-    "http://localhost:8080/api/discount_product"
-  );
+  const recievedData = await axios.get(baseURL + "/api/discount_product");
   return recievedData.data;
 }
 
 async function getProductsCart(query) {
-  let responseData = await axios.get(
-    "http://localhost:8080/api/list?query=" + query
-  );
+  let responseData = await axios.get(baseURL + "/api/list?query=" + query);
   // let products = {};
   // let keys = Object.keys(storage);
   // console.log(keys);
   // keys.forEach(async (element, index, array) => {
   //   products[element] = {
-  //     ...(await axios.get("http://localhost:8080/api/products?id=" + element))
+  //     ...(await axios.get(baseURL+"/api/products?id=" + element))
   //       .data,
   //     amount: storage[element],
   //   };
   // });
   // const recievedData = await axios.get(
-  //   "http://localhost:8080/api/products?id=" + id
+  //   baseURL+"/api/products?id=" + id
   // );
   return responseData.data;
 }
