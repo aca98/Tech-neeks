@@ -21,7 +21,7 @@ class NavBar extends Component {
         <nav className="navbar navbar-expand-lg navbar-expand-md navbar-light bg-nav-color">
           <Link className="navbar-brand d-sm-none d-md-block d-lg-block" to="/">
             <img
-              src={"data:image/webp;base64," + this.state.banners[1]}
+              src={"/api/small-banner.webp"}
               width="60"
               height="70"
               alt="Banner"
