@@ -23,8 +23,8 @@ import java.util.List;
 
 public final class Utilities {
     public static String DEFAULT_IMAGE_DIRECTORY = "./src/main/resources/static/images/";
-//    public static String IMAGE_DIRECTORY = "src/main/resources/media/";
-    public static String IMAGE_DIRECTORY = System.getenv("IMAGE_PATH");
+    public static String IMAGE_DIRECTORY = "src/main/resources/media/";
+//    public static String IMAGE_DIRECTORY = System.getenv("IMAGE_PATH");
 
 //    public static String IMAGE_DIRECTORY = "./classes/media/";
 
